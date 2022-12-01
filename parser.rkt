@@ -26,7 +26,8 @@
 
       ((equal? (car neo-code) 'assign) (list 'assign-exp (cadr neo-code) (neo-parser (caddr neo-code))))
 
-      ((equal? (car neo-code) 'block) (list 'block-exp (neo-parser (cdr neo-code))))
+      ((equal? (car neo-code) 'block)
+       (cons 'block-exp (neo-parser (cdr neo-code))))
       
       (else (map neo-parser neo-code)) ; -> (num-exp 1))
       )
@@ -85,3 +86,4 @@
     ))
 
 (provide (all-defined-out))
+
